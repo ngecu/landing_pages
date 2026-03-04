@@ -121,11 +121,15 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [
-    BASE_DIR / 'static',  # Project-wide static files
+    os.path.join(BASE_DIR, 'static'),  # This will be ignored if the directory doesn't exist
 ]
-STATIC_ROOT = BASE_DIR / 'staticfiles'  # For production collection
 
+
+if not os.path.exists(os.path.join(BASE_DIR, 'static')):
+    STATICFILES_DIRS = []
+    
 # Media files (User uploaded files)
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
