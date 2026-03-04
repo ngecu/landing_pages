@@ -6,6 +6,8 @@ app_name = 'nenasasa'
 urlpatterns = [
     path('nenasasa', views.NenasasaView.as_view(), name='nenasasa'),
     path('nenacall/', views.NenacallView.as_view(), name='nenacall'),
+    path('nenavoice/', views.NenavoiceView.as_view(), name='nenavoice'),
+
 
     
     # You can also use function-based views

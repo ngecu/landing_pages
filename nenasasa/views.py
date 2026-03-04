@@ -9,6 +9,8 @@ class NenasasaView(TemplateView):
 class NenacallView(TemplateView):
     template_name = 'nenasasa/nenacall.html'
 
+class NenavoiceView(TemplateView):
+    template_name = 'nenasasa/nenavoice.html'
 
 # You can also use function-based views
 def nenasasa(request):
@@ -16,3 +18,6 @@ def nenasasa(request):
 
 def nenacall(request):
     return render(request, 'nenasasa/nenacall.html')
+
+def nenavoice(request):
+    return render(request, 'nenasasa/nenavoice.html')
