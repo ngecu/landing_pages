@@ -15,6 +15,16 @@ class NenavoiceView(TemplateView):
 class NenachatView(TemplateView):
     template_name = 'nenasasa/nenachat.html'
 
+class NenasdkView(TemplateView):
+    template_name = 'nenasasa/nenasdk.html'
+
+class NenasmsView(TemplateView):
+    template_name = 'nenasasa/nenasms.html'
+
+class NenabotView(TemplateView):
+    template_name = 'nenasasa/nenabot.html'
+
+
 # You can also use function-based views
 def nenasasa(request):
     return render(request, 'nenasasa/nenasasa.html')
@@ -28,3 +38,11 @@ def nenavoice(request):
 def nenachat(request):
     return render(request, 'nenasasa/nenachat.html')
 
+def nenasdk(request):
+    return render(request, 'nenasasa/nenasdk.html')
+
+def nenasms(request):
+    return render(request, 'nenasasa/nenasms.html')
+
+def nenabot(request):
+    return render(request, 'nenasasa/nenabot.html')

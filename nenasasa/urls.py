@@ -8,6 +8,10 @@ urlpatterns = [
     path('nenacall/', views.NenacallView.as_view(), name='nenacall'),
     path('nenavoice/', views.NenavoiceView.as_view(), name='nenavoice'),
     path('nenachat/', views.NenachatView.as_view(), name='nenachat'),
+    path('nenasdk/', views.NenasdkView.as_view(), name='nenasdk'),
+    path('nenasms/', views.NenasmsView.as_view(), name='nenasms'),
+    path('nenabot/', views.NenabotView.as_view(), name='nenabot'),
+
 
 
     
