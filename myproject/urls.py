@@ -5,7 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('myapp.urls')),  # Include app URLs
+    path('', include('nenasasa.urls')),  # Include app URLs
 ]
 
 # Serve static and media files in development
