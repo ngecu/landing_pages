@@ -16,7 +16,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-pi#*z!z$5t&0vr%i)_4y+
 DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
 # IMPORTANT: Add your Render domain here!
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'devngecu-landing-pages.onrender.com/']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'devngecu-landing-pages.onrender.com']
 
 # Also read from environment variable for production
 if os.environ.get('ALLOWED_HOSTS'):
