@@ -24,6 +24,17 @@ class NenasmsView(TemplateView):
 class NenabotView(TemplateView):
     template_name = 'nenasasa/nenabot.html'
 
+class NenafinanceView(TemplateView):
+    template_name = 'nenasasa/nenafinance.html'
+
+class NenainsuranceView(TemplateView):
+    template_name = 'nenasasa/nenainsurance.html'
+
+class NenabusinessView(TemplateView):
+    template_name = 'nenasasa/nenabusiness.html'
+
+class NenaairtimeView(TemplateView):
+    template_name = 'nenasasa/nenaairtime.html'
 
 # You can also use function-based views
 def nenasasa(request):
@@ -46,3 +57,15 @@ def nenasms(request):
 
 def nenabot(request):
     return render(request, 'nenasasa/nenabot.html')
+
+def nenafinance(request):
+    return render(request, 'nenasasa/nenafinance.html')
+
+def nenainsurance(request):
+    return render(request, 'nenasasa/nenainsurance.html')
+
+def nenabusiness(request):
+    return render(request, 'nenasasa/nenabusiness.html')
+
+def nenaairtime(request):
+    return render(request, 'nenasasa/nenaairtime.html')

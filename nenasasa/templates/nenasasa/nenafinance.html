@@ -1,0 +1,2584 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, maximum-scale=5.0"
+    />
+    <title>NenaSasa for Financial Institutions </title>
+
+    <!-- Importing Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Tailwind Configuration -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              "primary-blue": "#001c9e",
+              "primary-red": "#e23161",
+              "primary-orange": "#ee7d1f",
+              "text-dark": "#001c9e",
+              "text-body": "#3f5896",
+              "text-light": "#ffffff",
+              "bg-light": "#f3f3f3",
+              "bg-white": "#ffffff",
+              "bg-dark-blue": "#282460",
+              "red-outline": "#D03683",
+              "red-bg": "#FDD7EA",
+              "card-bg": "#F8F8FF",
+              "blue-border": "#22C6F0",
+            },
+            fontFamily: {
+              sans: ["Poppins", "sans-serif"],
+              poppins: ["Poppins", "sans-serif"],
+              inter: ["Inter", "sans-serif"],
+            },
+            screens: {
+              xs: "475px",
+              sm: "640px",
+              md: "768px",
+              lg: "1024px",
+              xl: "1280px",
+              "2xl": "1536px",
+            },
+            backgroundImage: {
+              "gradient-hero":
+                "linear-gradient(91.65deg, #d03683 0%, #ee7d1f 95.5%)",
+              "gradient-blue":
+                "radial-gradient(closest-side, rgba(6, 0, 41, 1) 31%, rgba(45, 22, 216, 0.5) 49%, rgba(6, 0, 41, 0.75) 65%)",
+              "hero-pattern":
+                "url('{% static 'nenasasa/demos/nenafinance/images/Background.svg' %}')",
+              "how-it-works-pattern":
+                "url('{% static 'nenasasa/demos/nenafinance/images/Background2.svg' %}')",
+              "contact-pattern":
+                "url('{% static 'nenasasa/demos/nenafinance/images/background4.png' %}')",
+            },
+            boxShadow: {
+              card: "0px 19px 30px 0px rgba(63, 88, 150, 0.04)",
+            },
+            maxWidth: {
+              container: "1400px",
+            },
+            borderRadius: {
+              std: "15px",
+            },
+            fontSize: {
+              subtitle: ["26px", { lineHeight: "1.2" }],
+              paragraph: ["16px", { lineHeight: "1.5" }],
+            },
+            animation: {
+              float: "float 6s ease-in-out infinite",
+              "float-delayed": "float 6s ease-in-out 2s infinite",
+              "slide-up": "slideUp 0.6s ease-out",
+              "slide-in-left": "slideInLeft 0.8s ease-out",
+              "slide-in-right": "slideInRight 0.8s ease-out",
+              "fade-in": "fadeIn 0.8s ease-out",
+              "scale-in": "scaleIn 0.5s ease-out",
+              shimmer: "shimmer 2s linear infinite",
+            },
+            keyframes: {
+              float: {
+                "0%, 100%": { transform: "translateY(0px)" },
+                "50%": { transform: "translateY(-25px)" },
+              },
+              slideUp: {
+                "0%": { transform: "translateY(40px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+              slideInLeft: {
+                "0%": { transform: "translateX(-50px)", opacity: "0" },
+                "100%": { transform: "translateX(0)", opacity: "1" },
+              },
+              slideInRight: {
+                "0%": { transform: "translateX(50px)", opacity: "0" },
+                "100%": { transform: "translateX(0)", opacity: "1" },
+              },
+              fadeIn: {
+                "0%": { opacity: "0" },
+                "100%": { opacity: "1" },
+              },
+              scaleIn: {
+                "0%": { transform: "scale(0.9)", opacity: "0" },
+                "100%": { transform: "scale(1)", opacity: "1" },
+              },
+              shimmer: {
+                "0%": { backgroundPosition: "-1000px 0" },
+                "100%": { backgroundPosition: "1000px 0" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      /* Base responsive styles */
+      html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+      }
+
+      @media (max-width: 640px) {
+        html {
+          font-size: 14px;
+        }
+      }
+
+      body {
+        @apply bg-bg-light text-text-body antialiased overflow-x-hidden leading-relaxed;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+      }
+
+      @media (max-width: 767px) {
+        p {
+          font-size: 1rem;
+          line-height: 1.5rem;
+        }
+      }
+
+      /* Responsive container padding */
+      @media (max-width: 640px) {
+        .container-padding {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+
+      .content-width {
+        width: 75vw;
+        max-width: 1400px;
+        min-width: 1200px;
+      }
+
+      @media (max-width: 1199px) {
+        .content-width {
+          width: 100%;
+          min-width: 0;
+          max-width: 100%;
+        }
+      }
+
+      /* Gradient border card */
+      .gradient-border-card {
+        background-image:
+          linear-gradient(white, white),
+          linear-gradient(91.65deg, #d03683 0%, #ee7d1f 95.5%);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        border: 2px solid transparent;
+      }
+
+      .feature-image-shadow {
+        @apply w-full h-auto block shadow-[0_24px_80px_rgba(63,88,150,0.25)];
+      }
+
+      /* Animation classes */
+      .page-transition {
+        transition: opacity 0.3s ease-in-out;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .animate-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition:
+          opacity 0.6s ease-out,
+          transform 0.6s ease-out;
+      }
+      .animate-on-scroll.visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Hero animations */
+      /* animation: fadeInUp 0.8s ease-out forwards; */
+
+      .hero-content {
+        animation: fadeInUp 0.8s ease-out 0.25s both;
+      }
+      .hero-title {
+        animation: fadeInUp 0.8s ease-out 0.1s both;
+      }
+      .hero-subtitle {
+        animation: fadeInUp 0.8s ease-out 0.25s both;
+      }
+      .hero-paragraph {
+        animation: fadeInUp 0.8s ease-out 0.4s both;
+      }
+      .hero-cta {
+        animation: fadeInUp 0.8s ease-out 0.5s both;
+      }
+      .hero-image {
+        animation: fadeInUp 0.9s ease-out 0.6s both;
+      }
+
+      /* Hover effects */
+      .hover-lift {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease;
+      }
+      .hover-lift:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 24px 40px rgba(63, 88, 150, 0.12);
+      }
+
+      .btn-animate {
+        transition:
+          transform 0.3s ease,
+          box-shadow 0.3s ease,
+          opacity 0.3s ease;
+      }
+      .btn-animate:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(208, 54, 131, 0.35);
+      }
+
+      /* Mobile menu */
+      .mobile-menu.is-open {
+        opacity: 1;
+        visibility: visible;
+      }
+      .mobile-menu.is-open .mobile-menu-panel {
+        transform: translateX(0);
+      }
+      body.menu-open {
+        overflow: hidden;
+      }
+
+      /* Nav dropdown */
+      .nav-dropdown .nav-dropdown-panel {
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-4px);
+        transition:
+          opacity 0.2s ease,
+          visibility 0.2s ease,
+          transform 0.2s ease;
+      }
+
+      @media (min-width: 768px) {
+        .nav-dropdown:hover .nav-dropdown-panel {
+          opacity: 1;
+          visibility: visible;
+          transform: translateY(0);
+        }
+      }
+
+      .nav-dropdown-panel::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 100%;
+        height: 12px;
+      }
+
+      .nav-dropdown > a::after {
+        content: "";
+        position: absolute;
+        bottom: -4px;
+        left: 0;
+        width: 0;
+        height: 3px;
+        background-color: currentColor;
+        transition: width 0.3s ease;
+      }
+
+      .nav-dropdown > a:hover::after {
+        width: 100%;
+      }
+
+      .nav-dropdown > a:hover svg {
+        transform: rotate(180deg);
+      }
+
+      .nav-dropdown > a svg {
+        transition: transform 0.2s ease;
+      }
+
+      /* Navbar */
+      .navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        transition:
+          transform 0.3s ease,
+          background-color 0.3s ease;
+        background-color: transparent;
+      }
+
+      .navbar.scrolled {
+        background-color: rgba(44, 0, 100, 0.3);
+        backdrop-filter: blur(12px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .navbar.navbar-hidden {
+        transform: translateY(-100%);
+      }
+
+      .navbar.navbar-visible {
+        transform: translateY(0);
+      }
+
+      /* Menu item styles */
+      a.menuitem {
+        background-color: transparent;
+        text-decoration: none;
+        display: flex;
+        align-items: flex-start;
+        padding: 12px;
+        gap: 16px;
+        border-radius: 8px;
+        transition: all 0.25s ease-in-out;
+        will-change: transform, background, padding;
+      }
+
+      a.menuitem span {
+        color: black;
+      }
+
+      a.menuitem:hover span {
+        color: white;
+      }
+
+      a.menuitem:hover {
+        background: linear-gradient(91.65deg, #d03683 0%, #ee7d1f 95.52%);
+      }
+
+      /* Responsive hero styles */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 2rem !important;
+          line-height: 1.2 !important;
+        }
+
+        .hero-subtitle {
+          font-size: 1rem !important;
+          line-height: 1.5 !important;
+          width: 100% !important;
+          height: auto !important;
+        }
+
+        section.bg-\[\#2c0064\] {
+          padding-top: 60px !important;
+          padding-bottom: 60px !important;
+        }
+
+        .hero-image {
+          position: relative !important;
+          bottom: -80px !important;
+          max-width: 80% !important;
+          margin: 0 auto !important;
+          left: 50% !important;
+          transform: translateX(-50%) !important;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .hero-title {
+          font-size: 1.75rem !important;
+        }
+
+        .hero-image {
+          bottom: -60px !important;
+          max-width: 90% !important;
+        }
+      }
+
+      /* Responsive feature blocks */
+      @media (max-width: 768px) {
+        .feature-blocks-container {
+          margin-left: 1rem !important;
+          margin-right: 1rem !important;
+        }
+
+        .feature-block {
+          padding: 1.5rem !important;
+        }
+
+        .feature-block h3 {
+          font-size: 1.5rem !important;
+        }
+
+        .feature-block .grid {
+          gap: 1.5rem !important;
+        }
+      }
+
+      /* Responsive pricing */
+      @media (max-width: 1024px) {
+        .pricing-grid {
+          grid-template-columns: repeat(2, 1fr) !important;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .pricing-grid {
+          grid-template-columns: 1fr !important;
+        }
+
+        .pricing-card {
+          transform: none !important;
+        }
+      }
+
+      /* Responsive CTA section */
+      @media (max-width: 768px) {
+        .cta-section {
+          padding: 2rem !important;
+          flex-direction: column !important;
+        }
+
+        .cta-section h2 {
+          font-size: 2rem !important;
+          line-height: 1.2 !important;
+        }
+
+        .cta-section .max-w-\[50\%\] {
+          max-width: 100% !important;
+        }
+      }
+
+      /* Responsive footer */
+      @media (max-width: 768px) {
+        footer {
+          padding-top: 2rem !important;
+        }
+
+        footer .grid {
+          gap: 2rem !important;
+        }
+      }
+
+      /* Responsive dropdown panels */
+      @media (max-width: 768px) {
+        .nav-dropdown-panel {
+          position: static !important;
+          transform: none !important;
+          min-width: 100% !important;
+          margin-top: 0.5rem !important;
+          background: transparent !important;
+          border: none !important;
+          padding: 0 !important;
+        }
+
+        .nav-dropdown-panel .grid {
+          grid-template-columns: 1fr !important;
+        }
+
+        .nav-dropdown-panel h1 {
+          display: none !important;
+        }
+
+        a.menuitem {
+          padding: 8px !important;
+          background: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        a.menuitem span {
+          color: white !important;
+        }
+      }
+
+      /* Responsive images */
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+
+      /* Touch-friendly improvements */
+      @media (max-width: 768px) {
+        button,
+        a {
+          touch-action: manipulation;
+        }
+
+        .hover-lift:hover {
+          transform: none;
+        }
+
+        .btn-animate:hover {
+          transform: none;
+        }
+      }
+
+      .order-container {
+        width: 80%;
+        justify-content: center;
+        align-items: center;
+        justify-items: center;
+        justify-self: center;
+      }
+      .order-container img {
+        width: 100%;
+        height: 100%;
+      }
+
+      @media (max-width: 475px) {
+        .order-container {
+          width: 100%;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .content-width.mx-auto {
+          padding-left: 1rem;
+          padding-right: 1rem;
+        }
+      }
+
+      /* Logo carousel (mobile) */
+      .logo-carousel {
+        overflow: hidden;
+        width: 100%;
+      }
+
+      .logo-carousel-track {
+        display: flex;
+        width: max-content;
+        animation: logoCarouselScroll 40s linear infinite;
+      }
+
+      .logo-carousel-item {
+        flex: 0 0 auto;
+        margin-right: 1rem;
+      }
+
+      @keyframes logoCarouselScroll {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-50%);
+        }
+      }
+
+      @media (min-width: 768px) {
+        .logo-carousel-track {
+          animation: none;
+        }
+      }
+    </style>
+  </head>
+  <body style="background-color: #f3f3f3">
+    <!-- NAVBAR (unchanged structure but with responsive classes) -->
+    <header class="navbar py-4 md:py-5">
+      <div
+        class="w-full min-w-0 max-w-[1400px] md:w-[80vw] md:min-w-[1200px] mx-auto px-4 md:px-8 flex justify-between items-center"
+      >
+        <a href="/" class="h-8 md:h-10 flex-shrink-0">
+          <img
+            src="{% static 'nenasasa/demos/nenafinance/images/NenaFinanceLogo.png' %}"
+            alt="NenaFinance Logo"
+            class="h-8 md:h-10 w-auto"
+          />
+        </a>
+
+        <!-- Desktop Navigation (hidden on mobile) -->
+        <div
+          class="hidden md:flex text-white items-center gap-8 lg:gap-12 text-paragraph font-normal"
+        >
+          <nav
+            class="flex items-center gap-6 lg:gap-8"
+            aria-label="Main navigation"
+          >
+            <!-- Products dropdown -->
+            <div class="nav-dropdown relative">
+              <a
+                href="#"
+                class="flex items-center gap-1.5 text-sm lg:text-base"
+              >
+                Products
+                <svg
+                  class="w-3 h-3 lg:w-4 lg:h-4"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </a>
+              <div
+                class="nav-dropdown-panel absolute -translate-x-1/2 top-full mt-2.5 z-50 min-w-[640px] bg-white border border-[#B7B7B7] rounded-lg p-4"
+                role="menu"
+              >
+                <h1
+                  class="text-sm font-medium mb-3 bg-gradient-hero bg-clip-text text-transparent"
+                  style="font-size: 16px !important"
+                >
+                  Products
+                </h1>
+                <div class="grid grid-cols-3 gap-4">
+                  <!-- Product items -->
+                  <a href="https://nenacall.com/" target="_blank" class="menuitem" role="menuitem">
+                    <img
+                      src="{% static 'nenasasa/demos/nenasasa/assets/nenacallDropdownIcon.png' %}"
+                      alt="Nena Call icon"
+                      class="h-12 w-12 object-contain"
+                    />
+                    <div class="min-w-0">
+                      <span class="font-semibold block">Nena Call</span>
+                      <span class="text-xs block"
+                        >Lightweight Voice & Chat Tools</span
+                      >
+                    </div>
+                  </a>
+                  <a href="https://nenavoice.com/" target="_blank" class="menuitem" role="menuitem">
+                    <img
+                      src="{% static 'nenasasa/demos/nenasasa/assets/nenavoiceDropdownIcon.png' %}"
+                      alt="Nena Call icon"
+                      class="h-12 w-12 object-contain"
+                    />
+                    <div class="min-w-0">
+                      <span class="font-semibold block">Nena Voice</span>
+                      <span class="text-xs block"
+                        >Voice Operations & Agent Performance</span
+                      >
+                    </div>
+                  </a>
+                  <a href="https://nenachat.com/" target="_blank" class="menuitem" role="menuitem">
+                    <img
+                      src="{% static 'nenasasa/demos/nenasasa/assets/nenachatDropdownIcon.png' %}"
+                      alt="Nena Call icon"
+                      class="h-12 w-12 object-contain"
+                    />
+                    <div class="min-w-0">
+                      <span class="font-semibold block">Nena Chat</span>
+                      <span class="text-xs block"
+                        >AI-Powered Chat at Scale</span
+                      >
+                    </div>
+                  </a>
+                  <a href="https://nenasdk.com/" target="_blank" class="menuitem" role="menuitem">
+                    <img
+                      src="{% static 'nenasasa/demos/nenasasa/assets/nenaSDKDropdownIcon.png' %}"
+                      alt="Nena Call icon"
+                      class="h-12 w-12 object-contain"
+                    />
+                    <div class="min-w-0">
+                      <span class="font-semibold block">Nena SDK</span>
+                      <span class="text-xs block"
+                        >Embed Communication Directly</span
+                      >
+                    </div>
+                  </a>
+                  <a href="https://nenasms.com/" target="_blank" class="menuitem" role="menuitem">
+                    <img
+                      src="{% static 'nenasasa/demos/nenasasa/assets/nenasmsDropdownIcon.png' %}"
+                      alt="Nena Call icon"
+                      class="h-12 w-12 object-contain"
+                    />
+                    <div class="min-w-0">
+                      <span class="font-semibold block">Nena SMS</span>
+                      <span class="text-xs block">Reliable SMS at Scale</span>
+                    </div>
+                  </a>
+                  <a href="https://nenabot.com/" target="_blank" class="menuitem" role="menuitem">
+                    <img
+                      src="{% static 'nenasasa/demos/nenasasa/assets/nenabotDropdownIcon.png' %}"
+                      alt="Nena Call icon"
+                      class="h-12 w-12 object-contain"
+                    />
+                    <div class="min-w-0">
+                      <span class="font-semibold block">Nena Bot</span>
+                      <span class="text-xs block">AI-Powered Automation</span>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            <!-- Industries dropdown -->
+            <div class="nav-dropdown relative">
+              <a
+                href="#"
+                class="flex items-center gap-1.5 text-sm lg:text-base"
+              >
+                Industries
+                <svg
+                  class="w-3 h-3 lg:w-4 lg:h-4"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </a>
+              <div
+                class="nav-dropdown-panel absolute -translate-x-1/2 top-full mt-2.5 z-50 min-w-[490px] bg-white border border-[#B7B7B7] rounded-lg p-4"
+                role="menu"
+              >
+                <h1
+                  class="text-sm font-medium mb-3 bg-gradient-hero bg-clip-text text-transparent"
+                  style="font-size: 16px !important"
+                >
+                  Industries
+                </h1>
+                <div class="grid grid-cols-2 gap-4">
+                  <a href="https://finance.nenasasa.com/" target="_blank" class="menuitem" role="menuitem">
+                    <img
+                      src="{% static 'nenasasa/demos/nenasasa/assets/nenafinaceDropdownIcon.png' %}"
+                      alt="Nena Call icon"
+                      class="h-12 w-12 object-contain"
+                    />
+                    <div class="min-w-0">
+                      <span class="font-semibold block">Nena Finance</span>
+                      <span class="text-xs block"
+                        >For Financial Institutions</span
+                      >
+                    </div>
+                  </a>
+                  <a href="https://insurance.nenasasa.com/" class="menuitem" role="menuitem">
+                    <img
+                      src="{% static 'nenasasa/demos/nenasasa/assets/nenainsuranceDropdownIcon.png' %}"
+                      alt="Nena Call icon"
+                      class="h-12 w-12 object-contain"
+                    />
+                    <div class="min-w-0">
+                      <span class="font-semibold block">Nena Insurance</span>
+                      <span class="text-xs block"
+                        >For Insurance & Brokerage</span
+                      >
+                    </div>
+                  </a>
+                  <div
+                    class="md:col-span-2 place-items-left md:place-items-center"
+                  >
+                    <a href="https://business.nenasasa.com/" class="menuitem" role="menuitem">
+                      <img
+                        src="{% static 'nenasasa/demos/nenasasa/assets/nenabusinessDropdownIcon.png' %}"
+                        alt="Nena Call icon"
+                        class="h-12 w-12 object-contain"
+                      />
+                      <div class="min-w-0">
+                        <span class="font-semibold block">Nena Business</span>
+                        <span class="text-xs block">For Modern Businesses</span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          
+          </nav>
+
+          <div class="flex items-center gap-4 lg:gap-6">
+            <a href="https://nenacall.com/#/1/0" class="text-sm lg:text-base"
+              >Log in</a
+            >
+            <a
+              href="https://nenacall.com/#/2/0/"
+              class="bg-gradient-hero text-white px-4 lg:px-6 py-1.5 lg:py-2 rounded font-medium text-sm lg:text-base btn-animate"
+              >Sign Up</a
+            >
+          </div>
+        </div>
+
+        <!-- Mobile menu button -->
+        <button
+          type="button"
+          class="md:hidden flex flex-col justify-center items-center w-10 h-10 text-white focus:outline-none focus:ring-2 focus:ring-white/50 rounded"
+          aria-expanded="false"
+          aria-controls="mobile-menu"
+          aria-label="Open menu"
+          id="navbar-toggle"
+        >
+          <span class="navbar-icon-open">
+            <span class="block w-6 h-0.5 bg-white rounded mb-1.5"></span>
+            <span class="block w-6 h-0.5 bg-white rounded mb-1.5"></span>
+            <span class="block w-6 h-0.5 bg-white rounded"></span>
+          </span>
+          <span class="navbar-icon-close hidden">
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+
+      <!-- Mobile menu panel (updated for better mobile experience) -->
+      <div
+        id="mobile-menu"
+        class="mobile-menu fixed inset-0 z-40 md:hidden hidden opacity-0 bg-[#2c0064]/95 transition-opacity duration-300"
+        aria-hidden="true"
+      >
+        <div
+          class="mobile-menu-panel absolute top-0 right-0 h-screen w-full max-w-sm bg-[#2c0064] shadow-xl flex flex-col pt-20 px-4 pb-8 overflow-y-auto"
+        >
+          <button
+            type="button"
+            id="mobile-menu-close"
+            class="absolute top-4 right-4 text-white p-2"
+            aria-label="Close menu"
+          >
+            <svg
+              class="w-6 h-6"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+
+          <nav class="flex flex-col gap-2" aria-label="Mobile navigation">
+            <!-- Mobile Products Accordion -->
+            <div class="border-b border-white/20">
+              <button
+                class="mobile-dropdown-toggle flex justify-between items-center w-full text-white font-medium py-3"
+                aria-expanded="false"
+              >
+                Products
+                <svg
+                  class="w-4 h-4 transition-transform duration-200"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <div class="mobile-dropdown-content hidden pb-3">
+                <a href="https://nenacall.com/" target="_blank" class="block text-white/80 py-2 pl-4 text-sm"
+                  >Nena Call</a
+                >
+                <a href="https://nenavoice.com" target="_blank" class="block text-white/80 py-2 pl-4 text-sm"
+                  >Nena Voice</a
+                >
+                <a href="https://nenachat.com" target="_blank" class="block text-white/80 py-2 pl-4 text-sm"
+                  >Nena Chat</a
+                >
+                <a href="https://nenasdk.com" target="_blank" class="block text-white/80 py-2 pl-4 text-sm"
+                  >Nena SDK</a
+                >
+                <a href="https://nenasms.com" target="_blank" class="block text-white/80 py-2 pl-4 text-sm"
+                  >Nena SMS</a
+                >
+                <a href="https://nenabot.com" target="_blank" class="block text-white/80 py-2 pl-4 text-sm"
+                  >Nena Bot</a
+                >
+              </div>
+            </div>
+
+            <!-- Mobile Industries Accordion -->
+            <div class="border-b border-white/20">
+              <button
+                class="mobile-dropdown-toggle flex justify-between items-center w-full text-white font-medium py-3"
+                aria-expanded="false"
+              >
+                Industries
+                <svg
+                  class="w-4 h-4 transition-transform duration-200"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  />
+                </svg>
+              </button>
+              <div class="mobile-dropdown-content hidden pb-3">
+                <a href="https://finance.nenasasa.com/" target="_blank" class="block text-white/80 py-2 pl-4 text-sm"
+                  >Nena Finance</a
+                >
+                <a href="https://insurance.nenasasa.com/" target="_blank" class="block text-white/80 py-2 pl-4 text-sm"
+                  >Nena Insurance</a
+                >
+                <a href="https://business.nenasasa.com/" target="_blank" class="block text-white/80 py-2 pl-4 text-sm"
+                  >Nena Business</a
+                >
+              </div>
+            </div>
+
+          
+            <a
+              href="https://nenacall.com/#/1/0"
+              class="text-white font-medium py-3 border-b border-white/20"
+              >Log in</a
+            >
+
+            <a
+              href="https://nenacall.com/#/2/0/"
+              class="mt-4 bg-gradient-hero text-white text-center font-semibold py-3 px-6 rounded font-medium btn-animate"
+              >Sign Up</a
+            >
+          </nav>
+        </div>
+      </div>
+    </header>
+
+    <!-- HERO SECTION - Responsive -->
+    <section
+      class="bg-[#2c0064] bg-hero-pattern bg-cover bg-center pt-10 md:pt-[50px] text-white rounded-b-[50px] md:rounded-b-[150px] relative min-h-[600px] overflow-hidden h-[110vh] md:h-[110vh]"
+    >
+      <div
+        class="w-full min-w-0 max-w-[1400px] md:w-[80vw] md:min-w-[1200px] mx-auto px-4 md:px-8 flex flex-col md:flex-row md:items-center md:justify-between gap-0 md:gap-8 relative z-10 md:h-full"
+      >
+        <div
+          class="flex flex-col items-center text-center my-auto md:items-start md:text-left w-[100%] md:max-w-[540px] lg:max-w-[600px] pt-4 md:pt-0"
+        >
+          <span
+            class="inline-block border border-red-outline px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-red-bg text-red-outline text-xs sm:text-[14px] font-semibold uppercase tracking-[3px] sm:tracking-[5.6px] mb-4 md:mb-5"
+          >
+            CALL CENTER
+          </span>
+          <h1
+            class="hero-title !text-4xl md:text-4xl lg:text-[57px] xl:text-[57px] font-extrabold !leading-[1.2] md:leading-[1.15] mb-4 md:mb-5 font-inter text-white"
+          >
+            NenaSasa for Financial Institutions 
+          </h1>
+          <p
+            class="hero-subtitle text-base text-lg md:text-xl lg:text-xl mb-4 md:mb-5 opacity-95 leading-relaxed"
+          >
+            A Unified Communication Ecosystem for SACCOs, Banks & MFIs 
+          </p>
+          <p
+            class="hero-paragraph text-base opacity-90 leading-relaxed mb-6 md:mb-8 max-w-[90%] md:max-w-none"
+          >
+            NenaSasa provides financial institutions with a secure, intelligent
+            communication foundation helping them improve customer trust,
+            deliver exceptional service, and operate with greater efficiency.
+          </p>
+          <button
+            type="button"
+            onclick="window.location.href = 'https://nenasasa.com/#/2/0/'"
+            class="hero-cta bg-gradient-hero text-white px-4 lg:px-6 py-1.5 lg:py-2 rounded font-medium text-base lg:text-base btn-animate"
+          >
+            Book a Demo
+          </button>
+        </div>
+        <div
+          class="hero-image-wrapper flex-shrink-0 flex justify-center md:justify-end items-end w-full md:w-auto md:flex-1 md:max-w-[55%] lg:max-w-[50%] self-end"
+        >
+          <img
+            src="{% static 'nenasasa/demos/nenafinance/images/NenacallHeroImage.png' %}"
+            alt="NenaCall app interface and agent"
+            class="hero-image w-auto max-w-[85%] md:max-w-full h-auto md:h-[70%] lg:h-[75%] max-h-[420px] md:max-h-[520px] object-contain object-bottom"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- MINI APPS - Responsive -->
+    <section
+      class="py-10 md:py-[60px] px-4 text-center w-full animate-on-scroll"
+    >
+      <div class="w-full max-w-container mx-auto">
+        <h2
+          class="text-primary-blue font-semibold text-2xl md:text-subtitle mb-6 md:mb-10 px-2 sm:px-0"
+        >
+          Trusted Mini-App Among Many in NenaSasa Suite Apps
+        </h2>
+
+        <!-- Mobile infinite logo carousel -->
+        <div class="md:hidden logo-carousel mt-2">
+          <div class="logo-carousel-track">
+            <!-- First sequence -->
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nenacall-logo-6-30.png' %}"
+                  alt="NenaCall"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nenavoice-logo-20.png' %}"
+                  alt="NenaVoice"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nena-sms-logo-10.png' %}"
+                  alt="NenaSMS"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nena-chat-logo-10.png' %}"
+                  alt="NenaChat"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nena-mail-logo-10.png' %}"
+                  alt="NenaMail"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nena-sdk-logo-10.png' %}"
+                  alt="NenaSDK"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nenabot-logo-11.png' %}"
+                  alt="NenaBot"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+
+            <!-- Duplicate sequence for seamless loop -->
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nenacall-logo-6-30.png' %}"
+                  alt="NenaCall"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nenavoice-logo-20.png' %}"
+                  alt="NenaVoice"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nena-sms-logo-10.png' %}"
+                  alt="NenaSMS"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nena-chat-logo-10.png' %}"
+                  alt="NenaChat"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nena-mail-logo-10.png' %}"
+                  alt="NenaMail"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nena-sdk-logo-10.png' %}"
+                  alt="NenaSDK"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+            <div class="logo-carousel-item">
+              <div
+                class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+              >
+                <img
+                  src="{% static 'nenasasa/demos/nenafinance/images/nenabot-logo-11.png' %}"
+                  alt="NenaBot"
+                  class="h-6 md:h-[35px] w-auto"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Desktop / tablet grid -->
+        <div
+          class="hidden md:grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 md:gap-6 justify-items-center mx-auto"
+        >
+          <div
+            class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+          >
+            <img
+              src="{% static 'nenasasa/demos/nenafinance/images/nenacall-logo-6-30.png' %}"
+              alt="NenaCall"
+              class="h-6 md:h-[35px] w-auto"
+            />
+          </div>
+          <div
+            class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+          >
+            <img
+              src="{% static 'nenasasa/demos/nenafinance/images/nenavoice-logo-20.png' %}"
+              alt="NenaVoice"
+              class="h-6 md:h-[35px] w-auto"
+            />
+          </div>
+          <div
+            class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+          >
+            <img
+              src="{% static 'nenasasa/demos/nenafinance/images/nena-sms-logo-10.png' %}"
+              alt="NenaSMS"
+              class="h-6 md:h-[35px] w-auto"
+            />
+          </div>
+          <div
+            class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+          >
+            <img
+              src="{% static 'nenasasa/demos/nenafinance/images/nena-chat-logo-10.png' %}"
+              alt="NenaChat"
+              class="h-6 md:h-[35px] w-auto"
+            />
+          </div>
+          <div
+            class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+          >
+            <img
+              src="{% static 'nenasasa/demos/nenafinance/images/nena-mail-logo-10.png' %}"
+              alt="NenaMail"
+              class="h-6 md:h-[35px] w-auto"
+            />
+          </div>
+          <div
+            class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift"
+          >
+            <img
+              src="{% static 'nenasasa/demos/nenafinance/images/nena-sdk-logo-10.png' %}"
+              alt="NenaSDK"
+              class="h-6 md:h-[35px] w-auto"
+            />
+          </div>
+          <div
+            class="gradient-border-card bg-white rounded-lg px-4 py-5 flex items-center justify-center w-full max-w-[140px] hover-lift sm:col-start-2 md:col-start-auto"
+          >
+            <img
+              src="{% static 'nenasasa/demos/nenafinance/images/nenabot-logo-11.png' %}"
+              alt="NenaBot"
+              class="h-6 md:h-[35px] w-auto"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- WHAT IS / WHY - Responsive -->
+    <section class="py-8 sm:py-6 animate-on-scroll">
+      <div class="content-width mx-auto px-4 md:px-5">
+        <div
+          class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-[60px] items-center mb-12 md:mb-20"
+        >
+          <div class="order-last md:order-first">
+            <img
+              src="{% static 'nenasasa/demos/nenafinance/images/whyNenaCallImg.png' %}"
+              alt="Why NenaCall?"
+              class="w-full h-auto max-w-md mx-auto md:max-w-full"
+            />
+          </div>
+          <div class="text-center md:text-left">
+            <h2
+              class="text-primary-blue font-inter text-2xl md:text-[34px] font-bold leading-tight md:leading-[41px] text-left mb-4 md:mb-5"
+            >
+              Who We Are 
+            </h2>
+            <p
+              class="text-base text-left text-text-body md:text-paragraph font-inter font-normal leading-[26px]"
+            >
+              Financial institutions—including SACCOs, Banks, and Microfinance
+              Institutions—depend entirely on the NenaSasa products to power
+              communication, automate customer journeys, and improve service
+              delivery across all operational touchpoints. Every product—Nena
+              Chat, Nena Call, Nena Voice, Nena Bot, and the Nena SDK—plays a
+              direct role in strengthening efficiency, customer satisfaction,
+              and compliance.
+              <br /><br />
+              By combining Nena Chat, Nena Call, Nena Voice, Nena Bot, and the
+              Nena SDK, institutions streamline daily operations while
+              maintaining security, compliance, and efficiency.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Who is NenaCall for -->
+    <section class="py-8 sm:py-6 mb-8 md:mb-12 animate-on-scroll">
+      <div class="content-width mx-auto px-4 md:px-5 animate-on-scroll">
+        <div
+          class="bg-card-bg rounded-std p-4 sm:p-5 md:p-10 shadow-card border border-[rgba(63,88,150,0.2)] flex flex-col md:flex-row items-center gap-6 md:gap-12"
+        >
+          <div class="w-full md:w-2/3 space-y-4 md:space-y-6 md:pr-[60px]">
+            <h3
+              class="font-inter text-xl md:text-2xl lg:text-[26px] font-bold leading-[1.4] text-left"
+            >
+              <span class="block text-2xl text-primary-red">Saccos</span>
+              <span class="block text-2xl text-primary-blue"
+                >How Saccos Use NenaSasa Ecosystem</span
+              >
+            </h3>
+
+            <div class="flex flex-col gap-3 md:gap-4">
+              <div class="flex items-start gap-3 md:gap-4">
+                <div
+                  class="w-8 h-8 md:w-12 md:h-12 shrink-0 bg-primary-red/20 text-white rounded-full flex items-center justify-center"
+                >
+                  <!---Add Icon Here-->
+                  <img
+                    src="{% static 'nenasasa/demos/nenafinance/images/NenaChatIcon.png' %}"
+                    alt="NenaChat Icon"
+                    class="w-4 h-4 md:w-6 md:h-6"
+                  />
+                </div>
+                <div>
+                  <h4 class="font-inter font-semibold text-lg text-text-body">
+                    Nena Chat
+                  </h4>
+                  <p
+                    class="font-inter text-base leading-[24px] text-text-body mt-0.5"
+                  >
+                    Provides members with instant access to savings balances,
+                    contributions, dividends, loan limits, and product
+                    information.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 md:gap-4">
+                <div
+                  class="w-8 h-8 md:w-12 md:h-12 shrink-0 bg-primary-red/20 text-white rounded-full flex items-center justify-center"
+                >
+                  <!---Add Icon Here-->
+                  <img
+                    src="{% static 'nenasasa/demos/nenafinance/images/NenaBotIcon.png' %}"
+                    alt="NenaBotIcon"
+                    class="w-4 h-4 md:w-6 md:h-6"
+                  />
+                </div>
+                <div>
+                  <h4 class="font-inter font-semibold text-lg text-text-body">
+                    Nena Bot
+                  </h4>
+                  <p
+                    class="font-inter text-base leading-[24px] text-text-body mt-0.5"
+                  >
+                    Automates loan eligibility checks, sends mobile-money-based
+                    statements, and handles 24/7 self-service.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 md:gap-4">
+                <div
+                  class="w-8 h-8 md:w-12 md:h-12 shrink-0 bg-primary-red/20 text-white rounded-full flex items-center justify-center"
+                >
+                  <!---Add Icon Here-->
+                  <img
+                    src="{% static 'nenasasa/demos/nenafinance/images/NenaCallIcon.png' %}"
+                    alt="NenaCallIcon"
+                    class="w-4 h-4 md:w-6 md:h-6"
+                  />
+                </div>
+                <div>
+                  <h4 class="font-inter font-semibold text-lg text-text-body">
+                    Nena Call
+                  </h4>
+                  <p
+                    class="font-inter text-sm md:text-base leading-[24px] text-text-body mt-0.5"
+                  >
+                    Powers SACCO support lines, loan follow-ups, arrears
+                    reminders, and member assistance.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 md:gap-4">
+                <div
+                  class="w-8 h-8 md:w-12 md:h-12 shrink-0 bg-primary-red/20 text-white rounded-full flex items-center justify-center"
+                >
+                  <!---Add Icon Here-->
+                  <img
+                    src="{% static 'nenasasa/demos/nenafinance/images/NenaVoiceIcon.png' %}"
+                    alt="NenaVoiceIcon"
+                    class="w-4 h-4 md:w-6 md:h-6"
+                  />
+                </div>
+                <div>
+                  <h4 class="font-inter font-semibold text-lg text-text-body">
+                    Nena Voice
+                  </h4>
+                  <p
+                    class="font-inter text-base leading-[24px] text-text-body mt-0.5"
+                  >
+                    Gives admins supervisor controls, call routing, analytics,
+                    monitoring, and team performance tools.
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-start gap-3 md:gap-4">
+                <div
+                  class="w-8 h-8 md:w-12 md:h-12 shrink-0 bg-primary-red/20 text-white rounded-full flex items-center justify-center"
+                >
+                  <!---Add Icon Here-->
+                  <img
+                    src="{% static 'nenasasa/demos/nenafinance/images/NenaSDKIcon.png' %}"
+                    alt="NenaSDKIcon"
+                    class="w-4 h-4 md:w-6 md:h-6"
+                  />
+                </div>
+                <div>
+                  <h4 class="font-inter font-semibold text-lg text-text-body">
+                    Nena SDK
+                  </h4>
+                  <p
+                    class="font-inter text-base leading-[24px] text-text-body mt-0.5"
+                  >
+                    Integrates SACCO core systems (MSACCO, ERP, banking systems)
+                    with chatbots.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            class="w-full md:w-1/3 md:pr-[100px] flex justify-center md:justify-end"
+          >
+            <img
+              src="{% static 'nenasasa/demos/nenafinance/images/SaccosSecImg.png' %}"
+              alt="SaccosSecImg"
+              class="feature-image-shadow rounded-lg max-w-full"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- HOW IT WORKS TOGETHER - Responsive -->
+    <section
+      class="animate-on-scroll bg-[#282460] bg-how-it-works-pattern bg-cover bg-center py-8 pb-8 md:pt-[120px] md:pb-[120px] text-white rounded-b-[50px] md:rounded-b-[150px] h-[1300px] md:h-[1200px]"
+    >
+      <div class="content-width mx-auto px-4 md:px-4">
+        <div class="text-center mb-6 md:mb-[50px] px-2">
+          <h2
+            class="font-inter font-bold text-2xl leading-tight sm:leading-[38px] md:text-[34px] md:leading-[51px] tracking-[-0.03em] text-white"
+          >
+            <span class="block">Banks</span>
+            <span class="block pt-2 font-normal text-xl"
+              >How Banks Use NenaSasa Ecosystem</span
+            >
+          </h2>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-[20px] mb-6 md:mb-10 px-2 sm:px-4"
+        >
+          <div
+            class="animate-on-scroll bg-white border border-white/20 rounded-[20px] p-5 md:p-[15px] backdrop-blur-[10px] hover-lift transition-all duration-300 flex flex-col h-full"
+          >
+            <div
+              class="w-10 h-10 md:w-10 md:h-10 bg-primary-red text-white rounded-full flex items-center justify-center font-bold text-lg mb-3 md:mb-4 shrink-0"
+            >
+              1
+            </div>
+            <h3
+              class="font-inter text-lg md:text-sm font-semibold text-red-outline mb-2 md:mb-3"
+            >
+              Nena chat
+            </h3>
+            <p
+              class="font-inter text-base md:text-[13px] text-text-body leading-relaxed"
+            >
+              Assists customers with card issues, account inquiries, branch
+              services, and fraud alerts.
+            </p>
+          </div>
+
+          <div
+            class="animate-on-scroll bg-white border border-white/20 rounded-[20px] p-5 md:p-[15px] backdrop-blur-[10px] hover-lift transition-all duration-300 flex flex-col h-full"
+          >
+            <div
+              class="w-10 h-10 md:w-10 md:h-10 bg-primary-red text-white rounded-full flex items-center justify-center font-bold text-lg mb-3 md:mb-4 shrink-0"
+            >
+              2
+            </div>
+            <h3
+              class="font-inter text-lg md:text-sm font-semibold text-red-outline mb-2 md:mb-3"
+            >
+              Nena Bot
+            </h3>
+            <p
+              class="font-inter text-base md:text-[13px] text-text-body leading-relaxed"
+            >
+              Automates KYC processes, transaction FAQs, and real-time alerts.
+            </p>
+          </div>
+
+          <div
+            class="animate-on-scroll bg-white border border-white/20 rounded-[20px] p-5 md:p-[15px] backdrop-blur-[10px] hover-lift transition-all duration-300 flex flex-col h-full"
+          >
+            <div
+              class="w-10 h-10 md:w-10 md:h-10 bg-primary-red text-white rounded-full flex items-center justify-center font-bold text-lg mb-3 md:mb-4 shrink-0"
+            >
+              3
+            </div>
+            <h3
+              class="font-inter text-lg md:text-sm font-semibold text-red-outline mb-2 md:mb-3"
+            >
+              Nena Call
+            </h3>
+            <p
+              class="font-inter text-base md:text-[13px] text-text-body leading-relaxed"
+            >
+              Powers high-volume contact centers with VoIP and agent tools.
+            </p>
+          </div>
+
+          <div
+            class="animate-on-scroll bg-white border border-white/20 rounded-[20px] p-5 md:p-[15px] backdrop-blur-[10px] hover-lift transition-all duration-300 flex flex-col h-full"
+          >
+            <div
+              class="w-10 h-10 md:w-10 md:h-10 bg-primary-red text-white rounded-full flex items-center justify-center font-bold text-lg mb-3 md:mb-4 shrink-0"
+            >
+              4
+            </div>
+            <h3
+              class="font-inter text-lg md:text-sm font-semibold text-red-outline mb-2 md:mb-3"
+            >
+              Nena Voice
+            </h3>
+            <p
+              class="font-inter text-base md:text-[13px] text-text-body leading-relaxed"
+            >
+              Ensures compliance through analytics, and performance management.
+            </p>
+          </div>
+
+          <div
+            class="animate-on-scroll bg-white border border-white/20 rounded-[20px] p-5 md:p-[15px] backdrop-blur-[10px] hover-lift transition-all duration-300 flex flex-col h-full"
+          >
+            <div
+              class="w-10 h-10 md:w-10 md:h-10 bg-primary-red text-white rounded-full flex items-center justify-center font-bold text-lg mb-3 md:mb-4 shrink-0"
+            >
+              5
+            </div>
+            <h3
+              class="font-inter text-lg md:text-sm font-semibold text-red-outline mb-2 md:mb-3"
+            >
+              Nena SDK
+            </h3>
+            <p
+              class="font-inter text-base md:text-[13px] text-text-body leading-relaxed"
+            >
+              Connects seamlessly with core banking systems.
+            </p>
+          </div>
+        </div>
+
+        <!-- MFIs -->
+        <div class="text-center mb-6 md:mb-[50px] px-2">
+          <h2
+            class="font-inter font-bold text-2xl leading-tight sm:leading-[38px] md:text-[34px] md:leading-[51px] tracking-[-0.03em] text-white"
+          >
+            <span class="block">Microfinance Institutions (MFIs)</span>
+            <span class="block pt-2 font-normal text-xl"
+              >How banks use NenaSasa eco-system</span
+            >
+          </h2>
+        </div>
+
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-3 sm:gap-4 md:gap-[20px] mb-6 md:mb-10 px-2 sm:px-4"
+        >
+          <div
+            class="animate-on-scroll bg-white border border-white/20 rounded-[20px] p-5 md:p-[15px] backdrop-blur-[10px] hover-lift transition-all duration-300 flex flex-col h-full"
+          >
+            <div
+              class="w-10 h-10 md:w-10 md:h-10 bg-primary-red text-white rounded-full flex items-center justify-center font-bold text-lg mb-3 md:mb-4 shrink-0"
+            >
+              1
+            </div>
+            <h3
+              class="font-inter text-lg md:text-sm font-semibold text-red-outline mb-2 md:mb-3"
+            >
+              Nena chat
+            </h3>
+            <p
+              class="font-inter text-base md:text-[13px] text-text-body leading-relaxed"
+            >
+              Provides quick responses on group meeting schedules, loan cycles,
+              repayment timelines, and training queries. 
+            </p>
+          </div>
+
+          <div
+            class="animate-on-scroll bg-white border border-white/20 rounded-[20px] p-5 md:p-[15px] backdrop-blur-[10px] hover-lift transition-all duration-300 flex flex-col h-full"
+          >
+            <div
+              class="w-10 h-10 md:w-10 md:h-10 bg-primary-red text-white rounded-full flex items-center justify-center font-bold text-lg mb-3 md:mb-4 shrink-0"
+            >
+              2
+            </div>
+            <h3
+              class="font-inter text-lg md:text-sm font-semibold text-red-outline mb-2 md:mb-3"
+            >
+              Nena Bot
+            </h3>
+            <p
+              class="font-inter text-base md:text-[13px] text-text-body leading-relaxed"
+            >
+              Sends automated repayment reminders, collects application details,
+              and manages borrower communication workflows. 
+            </p>
+          </div>
+
+          <div
+            class="animate-on-scroll bg-white border border-white/20 rounded-[20px] p-5 md:p-[15px] backdrop-blur-[10px] hover-lift transition-all duration-300 flex flex-col h-full"
+          >
+            <div
+              class="w-10 h-10 md:w-10 md:h-10 bg-primary-red text-white rounded-full flex items-center justify-center font-bold text-lg mb-3 md:mb-4 shrink-0"
+            >
+              3
+            </div>
+            <h3
+              class="font-inter text-lg md:text-sm font-semibold text-red-outline mb-2 md:mb-3"
+            >
+              Nena Call
+            </h3>
+            <p
+              class="font-inter text-base md:text-[13px] text-text-body leading-relaxed"
+            >
+              Supports communication for loan officers, field agents, and
+              borrowers across dispersed regions. 
+            </p>
+          </div>
+
+          <div
+            class="animate-on-scroll bg-white border border-white/20 rounded-[20px] p-5 md:p-[15px] backdrop-blur-[10px] hover-lift transition-all duration-300 flex flex-col h-full"
+          >
+            <div
+              class="w-10 h-10 md:w-10 md:h-10 bg-primary-red text-white rounded-full flex items-center justify-center font-bold text-lg mb-3 md:mb-4 shrink-0"
+            >
+              4
+            </div>
+            <h3
+              class="font-inter text-lg md:text-sm font-semibold text-red-outline mb-2 md:mb-3"
+            >
+              Nena Voice
+            </h3>
+            <p
+              class="font-inter text-base md:text-[13px] text-text-body leading-relaxed"
+            >
+              Enables supervisors to manage distributed teams, monitor calls,
+              and ensure consistent service. 
+            </p>
+          </div>
+
+          <div
+            class="animate-on-scroll bg-white border border-white/20 rounded-[20px] p-5 md:p-[15px] backdrop-blur-[10px] hover-lift transition-all duration-300 flex flex-col h-full"
+          >
+            <div
+              class="w-10 h-10 md:w-10 md:h-10 bg-primary-red text-white rounded-full flex items-center justify-center font-bold text-lg mb-3 md:mb-4 shrink-0"
+            >
+              5
+            </div>
+            <h3
+              class="font-inter text-lg md:text-sm font-semibold text-red-outline mb-2 md:mb-3"
+            >
+              Nena SDK
+            </h3>
+            <p
+              class="font-inter text-base md:text-[13px] text-text-body leading-relaxed"
+            >
+              Syncs borrower data, repayment activity, and application forms
+              directly with MIS (Management Information Systems). 
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Business Impact - Card grid -->
+    <div
+      class="w-full max-w-[95%] sm:max-w-[90vw] md:max-w-[80vw] mx-auto px-4 md:px-5 mb-12 md:mb-20 -mt-[250px] md:-mt-[300px] relative z-10"
+    >
+      <div
+        class="animate-on-scroll rounded-std overflow-hidden p-6 md:p-10 bg-gradient-to-r from-purple-300/30 via-white/30 to-cyan-200/30 backdrop-blur-sm"
+      >
+        <!-- bg-gradient-to-r from-white/30 to-cyan-200/30 -->
+        <h3
+          class="text-2xl md:text-[34px] font-bold text-white text-center mb-4 md:mb-10 px-2"
+        >
+          Why Financial Institutions Choose NenaSasa
+        </h3>
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 !place-content-center !justify-center"
+        >
+          <div
+            class="animate-on-scroll bg-white rounded-xl border border-blue-border shadow-lg p-5 md:p-6 hover-lift transition-all duration-300 text-left"
+          >
+            <div
+              class="w-12 h-12 md:w-14 md:h-14 mb-4 text-primary-blue"
+              aria-hidden="true"
+            >
+              <img
+                src="{% static 'nenasasa/demos/nenafinance/images/YChooseIcon01.png' %}"
+                alt="YChooseIcon01"
+                class="w-10 h-10 md:w-12 md:h-12 mb-3"
+              />
+            </div>
+            <p
+              class="font-inter text-base md:text-sm text-text-body font-normal leading-snug"
+            >
+              A unified communication platform across chat, voice, and
+              automation. 
+            </p>
+          </div>
+          <div
+            class="animate-on-scroll bg-white rounded-xl border border-blue-border shadow-lg p-5 md:p-6 hover-lift transition-all duration-300 text-left"
+          >
+            <div
+              class="w-12 h-12 md:w-14 md:h-14 mb-4 text-primary-blue"
+              aria-hidden="true"
+            >
+              <img
+                src="{% static 'nenasasa/demos/nenafinance/images/YChooseIcon02.png' %}"
+                alt="YChooseIcon02"
+                class="w-10 h-10 md:w-12 md:h-12 mb-3"
+              />
+            </div>
+            <p
+              class="font-inter text-base md:text-sm text-text-body font-normal leading-snug"
+            >
+              Faster service delivery supported by AI and automated workflows.
+            </p>
+          </div>
+          <div
+            class="animate-on-scroll bg-white rounded-xl border border-blue-border shadow-lg p-5 md:p-6 hover-lift transition-all duration-300 text-left"
+          >
+            <div
+              class="w-12 h-12 md:w-14 md:h-14 mb-4 text-primary-blue"
+              aria-hidden="true"
+            >
+              <img
+                src="{% static 'nenasasa/demos/nenafinance/images/YChooseIcon03.png' %}"
+                alt="YChooseIcon03"
+                class="w-10 h-10 md:w-12 md:h-12 mb-3"
+              />
+            </div>
+            <p
+              class="font-inter text-base md:text-sm text-text-body font-normal leading-snug"
+            >
+              Smooth transitions from self-service interactions to human
+              support.
+            </p>
+          </div>
+          <div
+            class="animate-on-scroll bg-white rounded-xl border border-blue-border shadow-lg p-5 md:p-6 hover-lift transition-all duration-300 text-left"
+          >
+            <div
+              class="w-12 h-12 md:w-14 md:h-14 mb-4 text-primary-blue"
+              aria-hidden="true"
+            >
+              <img
+                src="{% static 'nenasasa/demos/nenafinance/images/YChooseIcon04.png' %}"
+                alt="YChooseIcon04"
+                class="w-10 h-10 md:w-12 md:h-12 mb-3"
+              />
+            </div>
+            <p
+              class="font-inter text-base md:text-sm text-text-body font-normal leading-snug"
+            >
+              Developer-friendly integration through the Nena SDK.
+            </p>
+          </div>
+          <div
+            class="animate-on-scroll bg-white rounded-xl border border-blue-border shadow-lg p-5 md:p-6 hover-lift transition-all duration-300 text-left"
+          >
+            <div
+              class="w-12 h-12 md:w-14 md:h-14 mb-4 text-primary-blue"
+              aria-hidden="true"
+            >
+              <img
+                src="{% static 'nenasasa/demos/nenafinance/images/YChooseIcon05.png' %}"
+                alt="YChooseIcon05"
+                class="w-10 h-10 md:w-12 md:h-12 mb-3"
+              />
+            </div>
+            <p
+              class="font-inter text-base md:text-sm text-text-body font-normal leading-snug"
+            >
+              Tailored for financial workflows, compliance, and operational
+              scale.
+            </p>
+          </div>
+          <div
+            class="animate-on-scroll bg-white rounded-xl border border-blue-border shadow-lg p-5 md:p-6 hover-lift transition-all duration-300 text-left"
+          >
+            <div
+              class="w-12 h-12 md:w-14 md:h-14 mb-4 text-primary-blue"
+              aria-hidden="true"
+            >
+              <img
+                src="{% static 'nenasasa/demos/nenafinance/images/YChooseIcon06.png' %}"
+                alt="YChooseIcon06"
+                class="w-10 h-10 md:w-12 md:h-12 mb-3"
+              />
+            </div>
+            <p
+              class="font-inter text-base md:text-sm text-text-body font-normal leading-snug"
+            >
+              Secure, intelligent communication foundation.
+            </p>
+          </div>
+          <!-- Sample 
+          <div
+            class="animate-on-scroll bg-white rounded-xl border border-blue-border shadow-lg p-5 md:p-6 hover-lift transition-all duration-300 text-left md:col-start-2"
+          >
+            <div
+              class="w-12 h-12 md:w-14 md:h-14 mb-4 text-primary-blue"
+              aria-hidden="true"
+            >
+              <img
+                src="{% static 'nenasasa/demos/nenafinance/images/ReducedOpsIcon.png' %}"
+                alt="ReducedOpsIcon"
+                class="w-10 h-10 md:w-12 md:h-12 mb-3"
+              />
+            </div>
+            <p
+              class="font-inter text-base sm:text-lg md:text-base text-text-body font-normal leading-snug"
+            >
+              Reduced operational overhead
+            </p>
+          </div> -->
+          <!-- <div
+            class="animate-on-scroll md:col-span-3 bg-white rounded-xl border border-blue-border shadow-lg p-5 md:p-6 hover-lift transition-all duration-300 text-left place-items-left md:place-items-center"
+          >
+            <div
+              class="w-12 h-12 md:w-14 md:h-14 mb-4 text-primary-blue"
+              aria-hidden="true"
+            >
+              <img
+                src="{% static 'nenasasa/demos/nenafinance/images/ReducedOpsIcon.png' %}"
+                alt="ReducedOpsIcon"
+                class="w-10 h-10 md:w-12 md:h-12 mb-3"
+              />
+            </div>
+            <p
+              class="font-inter text-base sm:text-lg md:text-base text-text-body font-normal leading-snug"
+            >
+              Reduced operational overhead
+            </p>
+          </div> -->
+        </div>
+      </div>
+    </div>
+
+    <!-- TESTIMONIALS - Responsive -->
+    <div class="content-width mx-auto px-4 md:px-5 mb-12 md:mb-20">
+      <div class="text-center mb-6 md:mb-10">
+        <h2
+          class="font-inter text-2xl md:text-[34px] lg:text-[40px] font-bold leading-tight text-primary-blue"
+        >
+          What Our Clients Say
+        </h2>
+      </div>
+
+      <div
+        class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6"
+      >
+        <!-- Testimonial 1 -->
+        <div
+          class="animate-on-scroll bg-white rounded-[20px] border border-[#D3E4FF] px-5 py-6 md:px-6 md:py-7 flex flex-col justify-between h-full"
+        >
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-10 h-10 rounded-full bg-cover bg-center bg-[url('{% static 'nenasasa/demos/nenafinance/images/TestimonialImg01.png' %}')]"
+            ></div>
+            <div>
+              <p class="font-inter text-sm font-semibold text-primary-blue">
+                Ezra Fitz
+              </p>
+              <p class="font-inter text-xs text-text-body">Author</p>
+            </div>
+          </div>
+          <div class="flex gap-3 pl-[20px] items-stretch">
+            <div class="w-px h-14 md:h-16 bg-primary-blue rounded-full"></div>
+            <p
+              class="font-inter text-sm md:text-[13px] leading-relaxed text-text-body"
+            >
+              The best financial decision I've ever made.
+            </p>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div
+          class="animate-on-scroll bg-white rounded-[20px] border border-[#D3E4FF] px-5 py-6 md:px-6 md:py-7 flex flex-col justify-between h-full"
+        >
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-10 h-10 rounded-full bg-cover bg-center bg-[url('{% static 'nenasasa/demos/nenafinance/images/TestimonialImg01.png' %}')]"
+            ></div>
+            <div>
+              <p class="font-inter text-sm font-semibold text-primary-blue">
+                Spencer Hastings
+              </p>
+              <p class="font-inter text-xs text-text-body">Attorney</p>
+            </div>
+          </div>
+          <div class="flex gap-3 pl-[20px] items-stretch">
+            <div class="w-px h-14 md:h-16 bg-primary-blue rounded-full"></div>
+            <p
+              class="font-inter text-sm md:text-[13px] leading-relaxed text-text-body"
+            >
+              Exceptional service and support.
+            </p>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div
+          class="animate-on-scroll bg-white rounded-[20px] border border-[#D3E4FF] px-5 py-6 md:px-6 md:py-7 flex flex-col justify-between h-full"
+        >
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-10 h-10 rounded-full bg-cover bg-center bg-[url('{% static 'nenasasa/demos/nenafinance/images/TestimonialImg01.png' %}')]"
+            ></div>
+            <div>
+              <p class="font-inter text-sm font-semibold text-primary-blue">
+                Hanna Marin
+              </p>
+              <p class="font-inter text-xs text-text-body">Fashion Designer</p>
+            </div>
+          </div>
+          <div class="flex gap-3 pl-[20px] items-stretch">
+            <div class="w-px h-14 md:h-16 bg-primary-blue rounded-full"></div>
+            <p
+              class="font-inter text-sm md:text-[13px] leading-relaxed text-text-body"
+            >
+              Highly recommend for anyone looking to invest.
+            </p>
+          </div>
+        </div>
+
+        <!-- Testimonial 4 -->
+        <div
+          class="animate-on-scroll bg-white rounded-[20px] border border-[#D3E4FF] px-5 py-6 md:px-6 md:py-7 flex flex-col justify-between h-full"
+        >
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-10 h-10 rounded-full bg-cover bg-center bg-[url('{% static 'nenasasa/demos/nenafinance/images/TestimonialImg01.png' %}')]"
+            ></div>
+            <div>
+              <p class="font-inter text-sm font-semibold text-primary-blue">
+                Caleb Rivers
+              </p>
+              <p class="font-inter text-xs text-text-body">Tech Entrepreneur</p>
+            </div>
+          </div>
+          <div class="flex gap-3 pl-[20px] items-stretch">
+            <div class="w-px h-14 md:h-16 bg-primary-blue rounded-full"></div>
+            <p
+              class="font-inter text-sm md:text-[13px] leading-relaxed text-text-body"
+            >
+              A trustworthy partner in finance.
+            </p>
+          </div>
+        </div>
+
+        <!-- Testimonial 5 -->
+        <div
+          class="animate-on-scroll bg-white rounded-[20px] border border-[#D3E4FF] px-5 py-6 md:px-6 md:py-7 flex flex-col justify-between h-full"
+        >
+          <div class="flex items-center gap-3 mb-4">
+            <div
+              class="w-10 h-10 rounded-full bg-cover bg-center bg-[url('{% static 'nenasasa/demos/nenafinance/images/TestimonialImg01.png' %}')]"
+            ></div>
+            <div>
+              <p class="font-inter text-sm font-semibold text-primary-blue">
+                Emily Fields
+              </p>
+              <p class="font-inter text-xs text-text-body">Coach</p>
+            </div>
+          </div>
+          <div class="flex gap-3 pl-[20px] items-stretch">
+            <div class="w-px h-14 md:h-16 bg-primary-blue rounded-full"></div>
+            <p
+              class="font-inter text-sm md:text-[13px] leading-relaxed text-text-body"
+            >
+              Efficient and reliable service.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER - Responsive -->
+    <footer
+      class="bg-[#282460] text-white pt-10 md:pt-20 pb-6 md:pb-10 relative"
+    >
+      <div class="max-w-container mx-auto px-4 md:px-5">
+        <div
+          class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1.5fr] gap-6 md:gap-10 mb-6 md:mb-10"
+        >
+          <div class="text-left place-items-start">
+            <div>
+              <img
+                src="{% static 'nenasasa/demos/nenafinance/images/NenaFinanceLogo.png' %}"
+                alt="NenaFinance Logo"
+                class="h-8 md:h-10 mb-3 md:mb-5 mx-auto sm:mx-0"
+              />
+            </div>
+            <p class="opacity-80 text-base md:text-paragraph">
+              Lavington. Nairobi, Kenya
+            </p>
+          </div>
+          <div class="text-left">
+            <h4 class="text-lg md:text-paragraph mb-3 md:mb-5 font-bold">
+              Products
+            </h4>
+           <ul>
+              <li class="mb-2 md:mb-3">
+                <a
+                  href="https://nenacall.com"
+                  class="text-[#a9bcea] text-base md:text-paragraph hover:text-white transition-colors"
+                  >NenaCall</a
+                >
+              </li>
+              <li class="mb-2 md:mb-3">
+                <a
+                  href="https://nenavoice.com/"
+                  class="text-[#a9bcea] text-base md:text-paragraph hover:text-white transition-colors"
+                  >NenaVoice</a
+                >
+              </li>
+              <li class="mb-2 md:mb-3">
+                <a
+                  href="https://nenasms.com/"
+                  class="text-[#a9bcea] text-base md:text-paragraph hover:text-white transition-colors"
+                  >NenaSMS</a
+                >
+              </li>
+              <li class="mb-2 md:mb-3">
+                <a
+                  href="https://nenasdk.com/"
+                  class="text-[#a9bcea] text-base md:text-paragraph hover:text-white transition-colors"
+                  >NenaSDK</a
+                >
+              </li>
+              <li class="mb-2 md:mb-3">
+                <a
+                  href="https://nenachat.com/"
+                  class="text-[#a9bcea] text-base md:text-paragraph hover:text-white transition-colors"
+                  >NenaChat</a
+                >
+              </li>
+            </ul>
+          </div>
+          <div class="text-left">
+            <h4 class="text-lg md:text-paragraph mb-3 md:mb-5 font-bold">
+              Quick Links
+            </h4>
+            <ul>
+					<li class="mb-2 md:mb-3">
+						<button
+							onclick="openTermsModal()"
+							class="text-[#a9bcea] text-xs md:text-paragraph hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0 text-left"
+						>
+							Terms of Service
+						</button>
+					</li>
+					<li class="mb-2 md:mb-3">
+						<button
+							onclick="openPrivacyModal()"
+							class="text-[#a9bcea] text-xs md:text-paragraph hover:text-white transition-colors cursor-pointer bg-transparent border-none p-0 text-left"
+						>
+							Privacy Policy
+						</button>
+					</li>
+				</ul>
+          </div>
+          <div class="text-left">
+            <h4 class="text-lg md:text-paragraph mb-3 md:mb-5 font-bold">
+              Contacts
+            </h4>
+            <ul>
+              <li
+                class="mb-2 md:mb-3 text-[#a9bcea] text-base md:text-paragraph"
+              >
+                
+                  Kenya: +254730738711
+            
+              </li>
+              <li
+                class="mb-2 md:mb-3 text-[#a9bcea] text-base md:text-paragraph"
+              >
+                
+                  Email: info@nenasasa.com
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+
+        <!-- Terms of Service Modal -->
+<div id="termsModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+	<div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+		<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="closeTermsModal()"></div>
+		
+		<span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+		
+		<div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full">
+			<div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+				<div class="sm:flex sm:items-start">
+					<div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
+						<h3 class="text-2xl leading-6 font-bold text-primary-blue mb-4" id="modal-title">
+							Terms of Service
+						</h3>
+						<div class="mt-2 max-h-[60vh] overflow-y-auto pr-4">
+							<div class="space-y-4 text-text-body text-sm">
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">1. Acceptance of Terms</h4>
+									<p>By accessing or using NenaSasa's services, you agree to be bound by these Terms of Service. If you do not agree to these terms, please do not use our services.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">2. Description of Service</h4>
+									<p>NenaSasa provides a unified customer engagement platform including voice, chat, SMS, and automation services. We reserve the right to modify, suspend, or discontinue any part of our services at any time.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">3. User Accounts</h4>
+									<p>You are responsible for maintaining the confidentiality of your account credentials. All activities under your account are your responsibility. You must provide accurate and complete information when creating an account.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">4. Acceptable Use</h4>
+									<p>You agree not to use our services for any unlawful purpose or in any way that could damage, disable, or impair our services. Prohibited activities include but are not limited to:</p>
+									<ul class="list-disc pl-5 mt-2 space-y-1">
+										<li>Spamming or sending unsolicited messages</li>
+										<li>Harassing or abusive behavior</li>
+										<li>Attempting to breach security measures</li>
+										<li>Violating any applicable laws or regulations</li>
+									</ul>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">5. Fees and Payments</h4>
+									<p>Subscription fees are billed in advance on a monthly or annual basis. Fees are non-refundable except as required by law. We reserve the right to change our pricing with reasonable notice.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">6. Intellectual Property</h4>
+									<p>All content, features, and functionality of our services remain our exclusive property. You may not copy, modify, distribute, or reverse engineer any part of our services without our express permission.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">7. Termination</h4>
+									<p>We may terminate or suspend your access to our services immediately, without prior notice, for conduct that we believe violates these Terms or is harmful to other users, us, or third parties.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">8. Limitation of Liability</h4>
+									<p>To the maximum extent permitted by law, NenaSasa shall not be liable for any indirect, incidental, special, consequential, or punitive damages resulting from your use or inability to use our services.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">9. Changes to Terms</h4>
+									<p>We reserve the right to modify these terms at any time. We will notify users of significant changes via email or through our platform. Continued use of our services after changes constitutes acceptance of the modified terms.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">10. Contact Information</h4>
+									<p>For questions about these Terms, please contact us at legal@nenasasa.com</p>
+								</section>
+								
+								<p class="text-xs text-gray-500 mt-4">Last updated: January 2024</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+				<button type="button" onclick="closeTermsModal()" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-gradient-hero text-base font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-red sm:ml-3 sm:w-auto sm:text-sm">
+					Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Privacy Policy Modal -->
+<div id="privacyModal" class="fixed inset-0 z-50 hidden overflow-y-auto" aria-labelledby="privacy-modal-title" role="dialog" aria-modal="true">
+	<div class="flex items-end justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+		<div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" aria-hidden="true" onclick="closePrivacyModal()"></div>
+		
+		<span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+		
+		<div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-3xl sm:w-full">
+			<div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+				<div class="sm:flex sm:items-start">
+					<div class="mt-3 text-center sm:mt-0 sm:text-left w-full">
+						<h3 class="text-2xl leading-6 font-bold text-primary-blue mb-4" id="privacy-modal-title">
+							Privacy Policy
+						</h3>
+						<div class="mt-2 max-h-[60vh] overflow-y-auto pr-4">
+							<div class="space-y-4 text-text-body text-sm">
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">1. Information We Collect</h4>
+									<p>We collect information you provide directly, including account information, communication content, and usage data. This may include:</p>
+									<ul class="list-disc pl-5 mt-2 space-y-1">
+										<li>Name, email address, phone number</li>
+										<li>Billing information</li>
+										<li>Communication logs and recordings</li>
+										<li>Device and browser information</li>
+										<li>Usage patterns and preferences</li>
+									</ul>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">2. How We Use Your Information</h4>
+									<p>We use collected information to:</p>
+									<ul class="list-disc pl-5 mt-2 space-y-1">
+										<li>Provide and improve our services</li>
+										<li>Process transactions and send notifications</li>
+										<li>Analyze usage patterns and optimize performance</li>
+										<li>Communicate with you about updates and offers</li>
+										<li>Ensure security and prevent fraud</li>
+										<li>Comply with legal obligations</li>
+									</ul>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">3. Information Sharing</h4>
+									<p>We do not sell your personal information. We may share information with:</p>
+									<ul class="list-disc pl-5 mt-2 space-y-1">
+										<li>Service providers who assist in operations</li>
+										<li>Legal authorities when required by law</li>
+										<li>Business partners with your consent</li>
+									</ul>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">4. Data Security</h4>
+									<p>We implement appropriate technical and organizational measures to protect your information. However, no method of transmission over the internet is 100% secure. We use encryption, access controls, and regular security assessments.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">5. Your Rights</h4>
+									<p>You have the right to:</p>
+									<ul class="list-disc pl-5 mt-2 space-y-1">
+										<li>Access your personal information</li>
+										<li>Correct inaccurate data</li>
+										<li>Request deletion of your data</li>
+										<li>Opt out of marketing communications</li>
+										<li>Export your data</li>
+									</ul>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">6. Cookies and Tracking</h4>
+									<p>We use cookies and similar technologies to enhance user experience, analyze trends, and administer the website. You can control cookies through your browser settings.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">7. Data Retention</h4>
+									<p>We retain your information for as long as your account is active or as needed to provide services. We may retain certain information for legal or legitimate business purposes.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">8. Children's Privacy</h4>
+									<p>Our services are not intended for individuals under 13. We do not knowingly collect information from children under 13. If you become aware that a child has provided us with information, please contact us.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">9. International Data Transfers</h4>
+									<p>Your information may be transferred to and processed in countries other than your own. We ensure appropriate safeguards are in place for such transfers.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">10. Changes to Privacy Policy</h4>
+									<p>We may update this policy periodically. We will notify you of material changes via email or through our platform.</p>
+								</section>
+								
+								<section>
+									<h4 class="font-semibold text-primary-red mb-2">11. Contact Us</h4>
+									<p>For privacy-related questions, contact our Data Protection Officer at privacy@nenasasa.com</p>
+								</section>
+								
+								<p class="text-xs text-gray-500 mt-4">Last updated: January 2024</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+				<button type="button" onclick="closePrivacyModal()" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-gradient-hero text-base font-medium text-white hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary-red sm:ml-3 sm:w-auto sm:text-sm">
+					Close
+				</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!-- Add this JavaScript before the closing body tag -->
+<script>
+// Modal functions for Terms of Service
+function openTermsModal() {
+    document.getElementById('termsModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeTermsModal() {
+    document.getElementById('termsModal').classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+// Modal functions for Privacy Policy
+function openPrivacyModal() {
+    document.getElementById('privacyModal').classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+}
+
+function closePrivacyModal() {
+    document.getElementById('privacyModal').classList.add('hidden');
+    document.body.style.overflow = '';
+}
+
+// Close modals with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        if (!document.getElementById('termsModal').classList.contains('hidden')) {
+            closeTermsModal();
+        }
+        if (!document.getElementById('privacyModal').classList.contains('hidden')) {
+            closePrivacyModal();
+        }
+    }
+});
+</script>
+
+    <script>
+      // Intersection Observer for scroll animations
+      (function () {
+        var observerOptions = {
+          root: null,
+          rootMargin: "0px 0px -50px 0px",
+          threshold: 0.1,
+        };
+
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+            }
+          });
+        }, observerOptions);
+
+        document.querySelectorAll(".animate-on-scroll").forEach(function (el) {
+          observer.observe(el);
+        });
+      })();
+
+      // Mobile menu toggle
+      // Mobile menu toggle
+      (function () {
+        var toggle = document.getElementById("navbar-toggle");
+        var menu = document.getElementById("mobile-menu");
+        var closeBtn = document.getElementById("mobile-menu-close");
+
+        if (!toggle || !menu) return;
+
+        function openMenu() {
+          // First remove hidden class to make it visible
+          menu.classList.remove("hidden");
+
+          // Use setTimeout to ensure the display change takes effect before adding the open class
+          setTimeout(() => {
+            menu.classList.add("is-open");
+          }, 10);
+
+          // Update ARIA attributes
+          menu.setAttribute("aria-hidden", "false");
+          toggle.setAttribute("aria-expanded", "true");
+
+          // Update toggle button icon
+          var openIcon = toggle.querySelector(".navbar-icon-open");
+          var closeIcon = toggle.querySelector(".navbar-icon-close");
+          if (openIcon) openIcon.classList.add("hidden");
+          if (closeIcon) closeIcon.classList.remove("hidden");
+
+          // Prevent body scrolling
+          document.body.classList.add("menu-open");
+        }
+
+        function closeMenu() {
+          // Remove open class first
+          menu.classList.remove("is-open");
+
+          // Update ARIA attributes
+          menu.setAttribute("aria-hidden", "true");
+          toggle.setAttribute("aria-expanded", "false");
+
+          // Update toggle button icon
+          var openIcon = toggle.querySelector(".navbar-icon-open");
+          var closeIcon = toggle.querySelector(".navbar-icon-close");
+          if (openIcon) openIcon.classList.remove("hidden");
+          if (closeIcon) closeIcon.classList.add("hidden");
+
+          // Re-enable body scrolling
+          document.body.classList.remove("menu-open");
+
+          // After animation completes, add hidden class back
+          setTimeout(() => {
+            // Only add hidden if menu isn't open (prevents race conditions)
+            if (!menu.classList.contains("is-open")) {
+              menu.classList.add("hidden");
+            }
+          }, 300); // Match this to your transition duration
+        }
+
+        // Toggle menu on button click
+        toggle.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+
+          if (menu.classList.contains("is-open")) {
+            closeMenu();
+          } else {
+            openMenu();
+          }
+        });
+
+        // Close button functionality
+        if (closeBtn) {
+          closeBtn.addEventListener("click", function (e) {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMenu();
+          });
+        }
+
+        // Close menu when clicking a link
+        menu.querySelectorAll("nav a").forEach(function (link) {
+          link.addEventListener("click", function (e) {
+            // Don't close if it's a dropdown toggle
+            if (!link.classList.contains("mobile-dropdown-toggle")) {
+              closeMenu();
+            }
+          });
+        });
+
+        // Close on escape key
+        document.addEventListener("keydown", function (e) {
+          if (e.key === "Escape" && menu.classList.contains("is-open")) {
+            closeMenu();
+          }
+        });
+
+        // Close when clicking outside the menu panel
+        menu.addEventListener("click", function (e) {
+          if (e.target === menu) {
+            closeMenu();
+          }
+        });
+
+        // Mobile dropdown toggles
+        document
+          .querySelectorAll(".mobile-dropdown-toggle")
+          .forEach((button) => {
+            button.addEventListener("click", function (e) {
+              e.preventDefault();
+              e.stopPropagation();
+
+              const content = this.nextElementSibling;
+              const isExpanded = this.getAttribute("aria-expanded") === "true";
+
+              this.setAttribute("aria-expanded", !isExpanded);
+              content.classList.toggle("hidden");
+
+              const icon = this.querySelector("svg");
+              if (icon) {
+                icon.style.transform = isExpanded
+                  ? "rotate(0deg)"
+                  : "rotate(180deg)";
+              }
+            });
+          });
+      })();
+
+      // Navbar hide/show on scroll
+      (function () {
+        const navbar = document.querySelector(".navbar");
+        if (!navbar) return;
+
+        let lastScrollTop = 0;
+        let scrollThreshold = 50;
+        let isNavbarVisible = true;
+
+        function handleNavbarBackground() {
+          if (window.scrollY > 50) {
+            navbar.classList.add("scrolled");
+          } else {
+            navbar.classList.remove("scrolled");
+          }
+        }
+
+        function handleNavbarVisibility() {
+          const scrollTop =
+            window.pageYOffset || document.documentElement.scrollTop;
+
+          if (scrollTop <= 50) {
+            navbar.classList.remove("navbar-hidden");
+            navbar.classList.add("navbar-visible");
+            isNavbarVisible = true;
+            lastScrollTop = scrollTop;
+            return;
+          }
+
+          if (scrollTop > lastScrollTop && scrollTop > scrollThreshold) {
+            if (isNavbarVisible) {
+              navbar.classList.add("navbar-hidden");
+              navbar.classList.remove("navbar-visible");
+              isNavbarVisible = false;
+            }
+          } else if (scrollTop < lastScrollTop) {
+            if (!isNavbarVisible) {
+              navbar.classList.remove("navbar-hidden");
+              navbar.classList.add("navbar-visible");
+              isNavbarVisible = true;
+            }
+          }
+
+          lastScrollTop = scrollTop;
+        }
+
+        function throttle(func, limit) {
+          let inThrottle;
+          return function () {
+            const args = arguments;
+            const context = this;
+            if (!inThrottle) {
+              func.apply(context, args);
+              inThrottle = true;
+              setTimeout(() => (inThrottle = false), limit);
+            }
+          };
+        }
+
+        handleNavbarBackground();
+
+        window.addEventListener(
+          "scroll",
+          throttle(function () {
+            handleNavbarBackground();
+            handleNavbarVisibility();
+          }, 100),
+        );
+      })();
+    </script>
+
+    <chat-bot></chat-bot>
+    <script src="https://nenasdk.com/nenasdk/sdk/sdk.js"></script>
+  </body>
+</html>

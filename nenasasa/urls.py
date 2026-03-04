@@ -11,6 +11,11 @@ urlpatterns = [
     path('nenasdk/', views.NenasdkView.as_view(), name='nenasdk'),
     path('nenasms/', views.NenasmsView.as_view(), name='nenasms'),
     path('nenabot/', views.NenabotView.as_view(), name='nenabot'),
+    path('nenabot/', views.NenabotView.as_view(), name='nenabot'),
+    path('nenafinance/', views.NenafinanceView.as_view(), name='nenafinance'),
+    path('nenainsurance/', views.NenainsuranceView.as_view(), name='nenainsurance'),
+    path('nenabusiness/', views.NenabusinessView.as_view(), name='nenabusiness'),
+    path('nenaairtime/', views.NenaairtimeView.as_view(), name='nenaairtime'),
 
 
 

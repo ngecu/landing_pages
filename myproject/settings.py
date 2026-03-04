@@ -9,23 +9,30 @@ import dj_database_url
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# # SECURITY WARNING: keep the secret key used in production secret!
+# SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-pi#*z!z$5t&0vr%i)_4y+q3_2*l061&+i%e36%9g3rmc791m!w')
+
+# # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
+
+# # IMPORTANT: Add your Render domain here!
+# ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'devngecu-landing-pages.onrender.com']
+
+# # Also read from environment variable for production
+# if os.environ.get('ALLOWED_HOSTS'):
+#     ALLOWED_HOSTS.extend(os.environ.get('ALLOWED_HOSTS').split(','))
+
+# # CSRF Trusted Origins (important for admin)
+# CSRF_TRUSTED_ORIGINS = ['https://devngecu-landing-pages.onrender.com/', 'http://localhost:8000']
+# if os.environ.get('CSRF_TRUSTED_ORIGINS'):
+#     CSRF_TRUSTED_ORIGINS.extend(os.environ.get('CSRF_TRUSTED_ORIGINS').split(','))
+
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-pi#*z!z$5t&0vr%i)_4y+q3_2*l061&+i%e36%9g3rmc791m!w')
+SECRET_KEY = os.environ.get('SECRET_KEY', 'unsafe-default-key')
+DEBUG = os.environ.get('DEBUG', 'False').lower() == 'true'
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', '').split(' ')
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
-
-# IMPORTANT: Add your Render domain here!
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'devngecu-landing-pages.onrender.com']
-
-# Also read from environment variable for production
-if os.environ.get('ALLOWED_HOSTS'):
-    ALLOWED_HOSTS.extend(os.environ.get('ALLOWED_HOSTS').split(','))
-
-# CSRF Trusted Origins (important for admin)
-CSRF_TRUSTED_ORIGINS = ['https://devngecu-landing-pages.onrender.com/', 'http://localhost:8000']
-if os.environ.get('CSRF_TRUSTED_ORIGINS'):
-    CSRF_TRUSTED_ORIGINS.extend(os.environ.get('CSRF_TRUSTED_ORIGINS').split(','))
 
 # Application definition
 INSTALLED_APPS = [
